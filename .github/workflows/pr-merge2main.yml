@@ -1,4 +1,4 @@
-name: "Run on Merge to Main"
+name: "Run on Merge to master"
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-on-merge:
-    name: "Triggered after PR merge to main"
+    name: "Triggered after PR merge to master"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,7 +15,7 @@ jobs:
 
       - name: Print commit info
         run: |
-          echo "This workflow was triggered by a push to main."
+          echo "This workflow was triggered by a push to master."
           echo "Latest commit:"
           git log -1 --pretty=format:"%h - %s by %an"
 
