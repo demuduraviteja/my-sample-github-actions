@@ -1,0 +1,25 @@
+name: "Run on Merge to Main"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-on-merge:
+    name: "Triggered after PR merge to main"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print commit info
+        run: |
+          echo "This workflow was triggered by a push to main."
+          echo "Latest commit:"
+          git log -1 --pretty=format:"%h - %s by %an"
+
+      - name: List files changed
+        run: |
+          echo "Files changed in the last commit:"
+          git diff-tree --no-commit-id --name-only -r HEAD
